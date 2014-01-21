@@ -3,11 +3,39 @@ layout: default
 title: Your New Jekyll Site
 ---
 
-<div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
+<div class="container" itemprop="blogPosts">
+	{% for post in site.posts limit 10 %}
+	<article class="hentry" itemscope itemtype="http://schema.org/BlogPosting">
+		<header>
+			<h1 class="entry-title" itemprop="name"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+		</header>
+
+		<div class="entry-content" itemprop="articleBody">
+			{{post.content | truncatewords : 50}}
+			<a class="read-more" href="{{ post.url }}">Read more about {{ post.title }}…</a>
+		</div>
+
+		<footer>
+			<div class="metadata">
+				<time class="updated" pubdate itemprop="datePublished" datetime="{{ post.date | date_to_string }}"><span>Posted on</span> {{ post.date | date_to_string }}</time> | <strong>Metadata:</strong> {{post.tags | join: ', '}}
+			</div>
+		</footer>
+	</article>
+	{% endfor %}
+</div>
+
+<div id="article-nav-container">
+	<aside id="article-nav" class="container">
+		<ul>
+			<li id="article-nav-left">
+				<a href="/archive"><span>&lt;</span> View all articles</a>
+			</li>
+			<li id="article-nav-right">
+				<a href="{{site.posts[0].url}}">{{site.posts[0].title}} <span>&gt;</span></a>
+			</li>
+		</ul>
+	</aside>
+	<aside id="article-nav-mobile">
+		<a href="/"><span>&lt;</span> Back to homepage</a>
+	</aside>
 </div>

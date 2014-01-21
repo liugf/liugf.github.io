@@ -1,44 +1,62 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
-        <meta name="viewport" content="width=device-width">
+<html itemscope itemtype="http://schema.org/Blog" xmlns:og="http://opengraphprotocol.org/schema/">
+	<head>
+		<meta charset="utf-8">
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta content="width=device-width" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
 
-        <!-- syntax highlighting CSS -->
-        <link rel="stylesheet" href="/css/syntax.css">
+		<title>Miscellanea | Code, design, &amp; cultural ephemera</title>
 
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="/css/main.css">
+  		<title>{{ page.title }}</title>
 
-    </head>
-    <body>
+		<link href="/favicon.ico" rel="icon" type="image/ico">
 
-        <div class="site">
-          <div class="header">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-            <a class="extra" href="/">home</a>
-          </div>
+		<!-- syntax highlighting CSS -->
+		<link rel="stylesheet" href="/css/pastie.css">
 
-          {{ content }}
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/screen.css">
+	</head>
+	<body id="home" itemscope itemtype="http://schema.org/Blog">
 
-          <div class="footer">
-            <div class="contact">
-              <p>
-                Your Name<br />
-                What You Are<br />
-                you@example.com
-              </p>
-            </div>
-            <div class="contact">
-              <p>
-                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
-                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
-              </p>
-            </div>
-          </div>
-        </div>
+		<div id="masthead-container">
+			<div id="masthead" class="container">
+				<div id="masthead-logo">
+					<a href="/"><img src="/img/logo-small.png" width=40 height=40><span><em itemprop="name">Miscellanea</em><i> / Code, design &amp; cultural ephemera</i></span></a>
+				</div>
+				<nav>
+					{% include topnav.html %}
+				</nav>
+			</div>
+		</div>
 
-    </body>
+		{{ content }}
+
+		<footer id="footer-page">
+			<div class="container">
+				<div id="colophon">
+					<div id="colophon-a">
+						You should follow me on <a href="https://twitter.com/#!/d_run">Twitter</a> or <a href="https://plus.google.com/106799502423019983125?rel=author" rel="author">Google</a>. You could fork one of my <a href="https://github.com/DarrenN">repos</a> on GitHub. My design portfolio is <a href="http://v25media.com" rel="me">here</a>. 
+					</div>
+					<div id="colophon-b">
+						&copy; {{site.time | date: "%Y" }} <span itemprop="author">Gavin Lau</span>, all rights reserved.
+					</div>
+				</div>
+				<div id="badges">
+					<div id="badges-a">
+						<ul>
+
+							<li><a type="application/json" rel="alternate" href="/atom.json">JSON</a></li>
+							<li><a type="application/xml" rel="alternate" href="/feed.rss">RSS</a></li>
+							<li><a type="application/atom+xml" rel="alternate" href="/atom.xml">XML</a></li>
+						</ul>
+					</div>
+					<div id="badges-b">
+						{% include links.html %}
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
 </html>

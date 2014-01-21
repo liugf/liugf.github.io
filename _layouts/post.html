@@ -1,9 +1,20 @@
 ---
 layout: default
 ---
-<h2>{{ page.title }}</h2>
-<p class="meta">{{ page.date | date_to_string }}</p>
+<div class="container">
+	<article class="hentry" itemscope itemtype="http://schema.org/BlogPosting">
+		<header>
+			<h1 class="entry-title" itemprop="name"><a href="{{ post.url }}">{{ page.title }}</a></h1>
+		</header>
 
-<div class="post">
-{{ content }}
+		<div class="entry-content" itemprop="articleBody">
+			{{ content }}
+		</div>
+
+		<footer>
+			<div class="metadata">
+				<time class="updated" pubdate itemprop="datePublished" datetime="{{ page.date | date_to_string }}"><span>Posted on</span> {{ page.date | date_to_string }}</time> | <strong>Metadata:</strong> {{page.tags | join: ', '}}
+			</div>
+		</footer>
+	</article>
 </div>
